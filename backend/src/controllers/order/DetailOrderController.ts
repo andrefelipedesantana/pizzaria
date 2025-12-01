@@ -1,0 +1,17 @@
+import { Response, Request } from "express";
+import { DetailOrderService } from "../../services/order/DetailOrderService.js";
+
+
+class DetailOrderController{
+    async handle(req: Request, res: Response){
+
+        const order_id = req.query.order_id as string;
+        const detail = new DetailOrderService();
+        const showdetails = await detail.execute({order_id});
+
+        return res.json(showdetails);
+
+    }
+}
+
+export {DetailOrderController};
